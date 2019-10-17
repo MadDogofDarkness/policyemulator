@@ -1,3 +1,8 @@
+'''
+this module is a simple FIFO queue
+'''
+
+
 q = []
 
 def isEmpty():
@@ -22,12 +27,15 @@ def pop():
 def add(thing):
     q.append(thing)
 
+def dump():
+    print(q)
+
 
 if __name__ != '__main__':
-    print("imported")
+    print("qE imported")
 
 if __name__ == '__main__':
-    print("not imported")
+    print("qE not imported")
     for i in range(10):
         add(i)
     print('q initalized for troubleshooting')

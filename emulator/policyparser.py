@@ -1,5 +1,6 @@
 '''parses xml formatted apim policies'''
 document = []
+policy = []
 
 class Element:
     def __init__(self, tagname):
@@ -7,6 +8,23 @@ class Element:
     
     def tostring(self):
         return self.tagname
+
+def findtags(docc):
+    count = 0 #debug
+    tagname = ''
+    tag = False
+    for line in docc:
+        for c in line:
+            if c == '<':
+                count += 1 #debug
+                tag = True
+            elif c == ' ' or c == '>':
+                policy.append(tagname)
+                tagname = ''
+                tag = False
+            else:
+                tagname += c
+    print(count)
 
 
 if __name__ == '__main__':
@@ -21,4 +39,5 @@ if __name__ == '__main__':
         document.append(line)
     f.close()
     print(document)
+    findtags(document)
     exit()
